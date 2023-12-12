@@ -11,13 +11,14 @@ public class MyFirstSel {
     // then I should be able to see jeans as a result title
 
     @Test
-    public void validateSearchJeans(){
+    public void validateSearchJeans() {
 
         String expectedResult = "Jeans";
         String actualResult;
 
         WebDriverManager.chromedriver().setup(); // configures the browser
-       WebDriver driver = new ChromeDriver(); // open browser
+        WebDriver driver = new ChromeDriver(); // open browser
+        driver.manage().window().maximize();
 
 
     }
