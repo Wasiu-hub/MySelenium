@@ -10,12 +10,12 @@ import java.time.Duration;
 
 public class MyFirstSel {
 
-    // given I am on the next page
-    // when I enter Jeans as a product and click on search button
-    // then I should be able to see jeans as a result title
-
     @Test
     public void validateSearchJeans() throws InterruptedException {
+
+        // given I am on the next homepage
+        // when I enter Jeans as a product and click on search button
+        // then I should be able to see jeans as a result title
 
         String expectedResult = "\"Jeans\"";
 
@@ -35,13 +35,23 @@ public class MyFirstSel {
 
         driver.findElement(By.xpath("//*[@id=\"header-search-form\"]/button/img")).click(); // click on search button
 
-//        Thread.sleep(2000); // test passed without this but not          in safari
+        // Thread.sleep(2000); // test passed without this but not          in safari
 
-        String actualResult =  driver.findElement(By.xpath ("//*[@id=\"plp-results-title-container\"]/div/h1/span")).getText();
+        String actualResult = driver.findElement(By.xpath("//*[@id=\"plp-results-title-container\"]/div/h1/span")).getText();
 
         Assert.assertEquals(expectedResult, actualResult);
 
         driver.close();
+    }
+
+    @Test
+    public void validateSearchBasedOnShirtAsAProduct() {
+        // given I am on the next homepage
+        // when I enter Shirt as a product and click on search button
+        // then I should be able to see Shirt as a result title
+
+        String expectedResult = "\"Shirt\"";
+
 
     }
 }
