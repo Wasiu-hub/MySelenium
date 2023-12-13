@@ -11,7 +11,7 @@ import java.time.Duration;
 public class MyFirstSel {
 
     @Test
-    public void validateSearchJeans() throws InterruptedException {
+    public void validateSearchJeans() {
 
         // given I am on the next homepage
         // when I enter Jeans as a product and click on search button
@@ -50,8 +50,29 @@ public class MyFirstSel {
         // when I enter Shirt as a product and click on search button
         // then I should be able to see Shirt as a result title
 
-        String expectedResult = "\"Shirt\"";
+        String expectedResult = "\"Shirts\"";
 
+        // configure the browser to use
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
 
+        // maximizing window
+        driver.manage().window().maximize();
+
+        // launch URL
+        driver.get("https://www.next.co.uk/");
+
+        // enter element
+        driver.findElement(By.id("onetrust-accept-btn-handler")).click();// this fails on safari because this line is executed after loading the above page, so it couldn't accept the cookies.
+
+        // find element by search button
+        driver.findElement(By.id("header-big-screen-search-box")).sendKeys("Shirts");
+
+        driver.findElement(By.xpath("//*[@id=\"header-search-form\"]/button/img")).click();
+
+        String actualResult = driver.findElement(By.xpath("//*[@id=\"plp-results-title-container\"]/div/h1/span")).getText();
+
+        Assert.assertEquals(expectedResult, actualResult);
+        driver.close();
     }
 }
