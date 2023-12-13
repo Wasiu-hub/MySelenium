@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,9 +10,13 @@ import java.time.Duration;
 public class MyFirstSel {
     WebDriver driver;
 
+    @BeforeClass
+    public static void beforeClass() {
+        WebDriverManager.chromedriver().setup();
+    }
+
     @Before
     public void beforeTest() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.next.co.uk/");
@@ -23,7 +24,7 @@ public class MyFirstSel {
     }
 
     @After
-    public void afterTest(){
+    public void afterTest() {
         driver.close();
     }
 
