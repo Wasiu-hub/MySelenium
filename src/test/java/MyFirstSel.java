@@ -41,5 +41,7 @@ public class MyFirstSel {
 
         Assert.assertEquals(expectedResult, actualResult);
 
+        driver.close();
+
     }
 }
