@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.time.Duration;
+
 public class MyFirstSel {
 
     // given I am on the next page
@@ -19,6 +21,7 @@ public class MyFirstSel {
 
         WebDriverManager.chromedriver().setup(); // configures the browser
         WebDriver driver = new ChromeDriver(); // open browser
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); //don't throw exceptions immediately, wait
         driver.manage().window().maximize(); // maximizing browser
 
         // driver.get("https://www.google.com/"); //launch URL
