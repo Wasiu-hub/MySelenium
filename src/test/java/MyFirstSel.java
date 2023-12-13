@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,6 @@ public class MyFirstSel {
     public void validateSearchJeans() {
 
         String expectedResult = "Jeans";
-        String actualResult;
 
         WebDriverManager.chromedriver().setup(); // configures the browser
         WebDriver driver = new ChromeDriver(); // open browser
@@ -29,9 +29,13 @@ public class MyFirstSel {
 
         driver.findElement(By.id("onetrust-accept-btn-handler")).click();
 
-        driver.findElement(By.name("header-big-screen-search-box")).sendKeys("Jeans");// enter Jeans
+        driver.findElement(By.name("header-big-screen-search-box")).sendKeys("Jeans"); // enter Jeans
 
-        driver.findElement(By.xpath("//*[@id=\"header-search-form\"]/button/img")).click();
+        driver.findElement(By.xpath("//*[@id=\"header-search-form\"]/button/img")).click(); // click on search button
+
+        String actualResult =  driver.findElement(By.xpath ("//*[@id=\"plp-results-title-container\"]/div/h1/span")).getText();
+
+        Assert.assertEquals(expectedResult, actualResult);
 
     }
 }
