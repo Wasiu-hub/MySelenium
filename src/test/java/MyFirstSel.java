@@ -29,5 +29,7 @@ public class MyFirstSel {
 
         driver.findElement(By.id("onetrust-accept-btn-handler")).click();
 
+        driver.findElement(By.name("header-big-screen-search-box")).sendKeys("Jeans");// enter Jeans
+
     }
 }
