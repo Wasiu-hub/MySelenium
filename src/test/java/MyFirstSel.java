@@ -31,5 +31,7 @@ public class MyFirstSel {
 
         driver.findElement(By.name("header-big-screen-search-box")).sendKeys("Jeans");// enter Jeans
 
+        driver.findElement(By.xpath("//*[@id=\"header-search-form\"]/button/img")).click();
+
     }
 }
