@@ -15,13 +15,15 @@ public class MyFirstSel {
     // then I should be able to see jeans as a result title
 
     @Test
-    public void validateSearchJeans() {
+    public void validateSearchJeans() throws InterruptedException {
 
-        String expectedResult = "Jeans";
+        String expectedResult = "\"Jeans\"";
 
         WebDriverManager.chromedriver().setup(); // configures the browser
         WebDriver driver = new ChromeDriver(); // open browser
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); //don't throw exceptions immediately, wait
+
+        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); //don't throw exceptions immediately, wait - test passed here without it, but not in safari
+
         driver.manage().window().maximize(); // maximizing browser
 
         // driver.get("https://www.google.com/"); //launch URL
@@ -32,6 +34,8 @@ public class MyFirstSel {
         driver.findElement(By.name("header-big-screen-search-box")).sendKeys("Jeans"); // enter Jeans
 
         driver.findElement(By.xpath("//*[@id=\"header-search-form\"]/button/img")).click(); // click on search button
+
+//        Thread.sleep(2000); // test passed without this but not          in safari
 
         String actualResult =  driver.findElement(By.xpath ("//*[@id=\"plp-results-title-container\"]/div/h1/span")).getText();
 
