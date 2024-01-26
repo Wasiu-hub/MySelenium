@@ -18,6 +18,7 @@ public class MyFirstSel {
     @Before
     public void beforeTest() {
         driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.get("https://www.next.co.uk/");
         driver.findElement(By.id("onetrust-accept-btn-handler")).click();
@@ -29,7 +30,7 @@ public class MyFirstSel {
     }
 
     @Test
-    public void validateSearchJeans() {
+    public void validateSearchJeans() throws InterruptedException {
 
         // given I am on the next homepage
         // when I enter Jeans as a product and click on search button
